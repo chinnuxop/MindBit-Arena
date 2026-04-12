@@ -5,7 +5,7 @@ import { clerkMiddleware } from '@clerk/express'
 import { connectDB } from "./config/db.js";
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8080;
 
 //MIDDLEWARES
 app.use(cors());
