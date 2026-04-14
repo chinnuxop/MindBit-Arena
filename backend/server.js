@@ -3,6 +3,7 @@ import cors from 'cors';
 import 'dotenv/config';
 import { clerkMiddleware } from '@clerk/express'
 import { connectDB } from "./config/db.js";
+import userRouter from './routes/user.js';
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -15,6 +16,9 @@ app.use(clerkMiddleware())
 connectDB();
 
 //ROUTES
+app.use("/api/users" , userRouter);
+
+
 app.get("/",(req,res)=>{
  res.send("API WORKING");
 });
