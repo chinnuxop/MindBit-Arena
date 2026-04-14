@@ -5,21 +5,24 @@ import { clerkMiddleware } from '@clerk/express'
 import { connectDB } from "./config/db.js";
 import userRoutes from './routes/user.js';
 import adminRoutes from './routes/admin.js';
+import  resultRoutes from './routes/result.js';
 
 
 const app = express();
 const PORT = process.env.PORT || 8080;
 
 //MIDDLEWARES
-app.use(cors());
-app.use(express.json());
 app.use(clerkMiddleware())
+app.use(cors());//as the user will be found first then we use the json
+app.use("/api/users" , userRoutes);
+app.use(express.json());
+
 //DB
 connectDB();
 
 //ROUTES
-app.use("/api/users" , userRoutes);
 app.use("/api/admin" , adminRoutes);
+app.use("/api/result", resultRoutes);
 
 
 

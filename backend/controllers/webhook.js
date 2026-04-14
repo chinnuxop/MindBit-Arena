@@ -31,7 +31,7 @@ export const clerkWebhook = async (req, res) => {
                 {
                     clerkId: data.id,
                     email: primaryEmail,
-                    fullName: `${data.first_name || ""} ${data.last_name | ""}`,
+                    fullName: `${data.first_name || ""} ${data.last_name || ""}`,
                     role: role
 
                 },
