@@ -3,7 +3,9 @@ import cors from 'cors';
 import 'dotenv/config';
 import { clerkMiddleware } from '@clerk/express'
 import { connectDB } from "./config/db.js";
-import userRouter from './routes/user.js';
+import userRoutes from './routes/user.js';
+import adminRoutes from './routes/admin.js';
+
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -16,7 +18,9 @@ app.use(clerkMiddleware())
 connectDB();
 
 //ROUTES
-app.use("/api/users" , userRouter);
+app.use("/api/users" , userRoutes);
+app.use("/api/admin" , adminRoutes);
+
 
 
 app.get("/",(req,res)=>{
