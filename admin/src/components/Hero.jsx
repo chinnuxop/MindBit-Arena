@@ -1,8 +1,15 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { GraduationCap,Lock } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Hero = () => {
+    useEffect(()=>{
+        const previous = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+        return() => {
+            document.body.style.overflow = previous;
+        };
+    },[]);
     return (
         <>
             <div className="h-screen pb-30 w-screen overflow-hidden font-[pacifico] bg-gray-50 flex items-center justify-center">
