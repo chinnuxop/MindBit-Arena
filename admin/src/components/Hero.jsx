@@ -33,7 +33,7 @@ const Hero = () => {
 
                     <Link to='/dashboard' className="text-md text-indigo-500 mt-6
                     font-bold items-center flex justify-center gap-2 animate-pulse">
-                        <Lock size={16}/> Please authenticate to continue...
+                        <Lock size={16}/> Please authenticate to continue
                     </Link>
                 </div>
 
