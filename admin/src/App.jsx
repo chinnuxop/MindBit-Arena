@@ -29,7 +29,7 @@ function RequiredAuth({ children }) {
             <Link to='/' state={{ from: location }}
               className="px-4 py-2 text-sm rounded-full bg-purple-600 
 text-white shadow-sm hover:bg-purple-700 hover:shadow-md
- transition-all duration-300 ease-in-out animate-ping">
+ transition-all duration-300 ease-in-out animate-pulse">
               HOME
             </Link>
           </div>
