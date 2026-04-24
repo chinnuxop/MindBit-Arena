@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import useApi from "./useApi"; // adjust path if needed
-
+import { useApi } from '../service/api/api.js';
+import { dashboardStyles } from "../assets/dummyStyles";
+import { AlertCircle } from "lucide-react";
 //Helper function
 const levels = [
   { value: "Basic", color: "text-green-600", bg: "bg-green-50" },
@@ -59,9 +60,11 @@ function parseCSVText(csvText) {
   return rows.map((r) => r.map((c) => c.trim()));
 }
 
-const [technology, setTechnology] = useState("");
+
+const Dashboard = () => {
+  const [technology, setTechnology] = useState("");
   const [level, setLevel] = useState("Basic");
-  const [timeLimit, setTimeLimit] = useState(30);
+  const [timeLimit, setTimeLimit] = useState(30);//in minute
   const [questions, setQuestions] = useState([]);
   const [isDragging, setIsDragging] = useState(false);
   const [toast, setToast] = useState({
@@ -361,12 +364,52 @@ const [technology, setTechnology] = useState("");
   const isFormValid =
     technology.trim() && level && timeLimit >= 1 && questions.length > 0;
 
-
-
-
-const Dashboard = () => {
   return (
-    <div>Dashboard</div>
+    <div className={dashboardStyles.page}>
+      <div className={dashboardStyles.container}>
+        <div className={dashboardStyles.headerWrapper}>
+          <div className={dashboardStyles.headerInner}>
+            <div>
+              <h1 className={dashboardStyles.title}>MindBit Arena</h1>
+            </div>
+          </div>
+        </div>
+
+        <div className={dashboardStyles.grid}>
+          <div className={dashboardStyles.mainColumn}>
+            <div className={dashboardStyles.card}>
+              <h2 className={dashboardStyles.cardTitle}>Create New Quiz</h2>
+              <div className={dashboardStyles.formFields}>
+                <div>
+                  <lable className={dashboardStyles.label}>
+                    Technology Name*
+                  </lable>
+                  <input type="text" value={technology} onChange={(e)=>{
+                    setTechnology(e.target.value);
+                    setValidationErrors((prev)=>({
+                      ...prev,
+                      technology: "",
+                    }));
+                  }}
+                  placeholder="e.g., Javascript, React, Python" 
+                  className={`${dashboardStyles.inputBase}
+                   ${validationErrors.technology
+                   ? dashboardStyles.inputErrorBorder
+                  : dashboardStyles.inputNormalBorder}`}
+                  />
+                  {validationErrors.technology && (
+                    <p className={dashboardStyles.errorMessage}>
+                      <AlertCircle className={dashboardStyles.errorIcon} />
+                      {validationErrors.technology}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 

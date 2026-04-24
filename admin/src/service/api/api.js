@@ -32,7 +32,7 @@ export const apiRequest = async (
 };
 
 //use api
-export const useapi = () => {
+export const useApi = () => {
     const {getToken} = useAuth();
     const request = async (endpoint,method="GET",body = null) => {
         const token = await getToken();
