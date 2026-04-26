@@ -3,6 +3,7 @@ import { Routes, Route, useLocation, Link } from 'react-router-dom';
 import { useUser } from "@clerk/react";
 import Home from "./pages/Home.jsx";
 import DashboardPage from "./pages/DashboardPage.jsx";
+import ListPage from "./pages/ListPage.jsx";
 
 // to protect the route
 function RequiredAuth({ children }) {
@@ -52,6 +53,11 @@ const App = () => {
       <Route path="/dashboard" element={
         <RequiredAuth>
         <DashboardPage />
+        </RequiredAuth>} />
+
+        <Route path="/list" element={
+        <RequiredAuth>
+        <ListPage />
         </RequiredAuth>} />
 
     </Routes>

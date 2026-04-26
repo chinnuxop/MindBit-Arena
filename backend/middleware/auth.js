@@ -6,7 +6,7 @@ export const protect = ClerkExpressWithAuth();
 export const isAdmin = async (req, res, next) => {
     try {
         const clerkId = req.auth.userId;
-        const user = await User.findOne({ clerkid });
+        const user = await User.findOne({ clerkId });
 
         if (user && user.role === "admin") {
             next();

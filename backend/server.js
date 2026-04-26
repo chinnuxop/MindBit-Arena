@@ -5,7 +5,9 @@ import { clerkMiddleware } from '@clerk/express'
 import { connectDB } from "./config/db.js";
 import userRoutes from './routes/user.js';
 import adminRoutes from './routes/admin.js';
-import  resultRoutes from './routes/result.js';
+import  resultRoutes from './routes/result.js'; 
+
+
 
 
 const app = express();
