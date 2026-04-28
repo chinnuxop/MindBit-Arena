@@ -19,6 +19,6 @@ export const isAdmin = async (req, res, next) => {
 
     }
     catch (error) {
-        res.status(500).json({ message: "Access Denied. Admins Only." });
+        res.status(500).json({ message: "Server Error" , error });
     }
 }

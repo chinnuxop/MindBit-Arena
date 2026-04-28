@@ -25,7 +25,7 @@ export const CreatemyResult = async (req, res) => {
 //to get result fro logged-in user
 export const getMyResults = async (req,res) => {
     const { userId } = getAuth(req);
-    const results = (await Result.find({userId})).toSorted({createdAt: -1});
+    const results = (await Result.find({userId})).sort({createdAt: -1});
 
     res.json(results);
 }
