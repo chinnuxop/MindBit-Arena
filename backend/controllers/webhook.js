@@ -52,7 +52,7 @@ export const clerkWebhook = async (req, res) => {
 
         if (type === "session.ended") {
             console.log("LOGOUT DETECTED");
-            await User.findOneAndDelete(
+            await User.findOneAndUpdate(
 
                 { clerkId: data.user_id },
 
@@ -61,7 +61,7 @@ export const clerkWebhook = async (req, res) => {
         }
         if (type === "session.removed") {
             console.log("LOGOUT DETECTED");
-            await User.findOneAndDelete(
+            await User.findOneAndUpdate(
 
                 { clerkId: data.user_id },
 
