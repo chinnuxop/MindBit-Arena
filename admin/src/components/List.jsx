@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import { listPageStyles } from '../assets/dummyStyles';
 import { useApi } from '../service/api/api.js';
-import { AlertCircle, XCircle, CheckCircle, X, Search, Filter
-    , Cpu, Clock, FileText, Calendar, Trash2
+import {
+    AlertCircle, XCircle, CheckCircle, X, Search, Filter
+    , Cpu, Clock, FileText, Calendar, Trash2,Plus
 } from "lucide-react";
 
 const List = () => {
@@ -333,7 +334,73 @@ const List = () => {
                             </div>
                         ))}
                     </div>
+                    {/* empty state */}
 
+                    {filteredTechnologies.length === 0 && (
+                        <div className={listPageStyles.emptyContainer}>
+                            <div className={listPageStyles.emptyBlurWrapper}>
+                                <div className={listPageStyles.emptyBlurCircle}></div>
+                            </div>
+                            <div className={listPageStyles.emptyContent}>
+                                <div className={listPageStyles.emptyIconBox}>
+                                    <FileText className={listPageStyles.emptyIcon} />
+                                </div>
+                                <h3 className={listPageStyles.emptyTitle}>
+                                    No technologies found
+                                </h3>
+                                <p className={listPageStyles.emptyText}>
+                                    {searchTerm || selectedLevel !== "All" ?
+                                        "Try adjusting your search or filter to find what you're looking for." :
+                                        "Get Started by creating your first technology quiz."}
+                                </p>
+                                <a href="/dashboard" className={listPageStyles.emptyButton}>
+                                    <Plus className={listPageStyles.emptyButtonIcon} />
+                                    <span className={listPageStyles.emptyButtonText}>
+                                        Create First Quiz
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    )}
+                    {/* Confirm Delete Modal */}
+                    {
+                        confirmDelete.open && (
+                            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+                                <div className="bg-white rounded-2xl p-6 w-[90%] max-w-md shadow-xl">
+                                    <h3 className="text-lg font-semibold mb-2">Delete Quiz?</h3>
+
+                                    <p className="text-sm text-gray-600 mb-6">
+                                        Are you sure you want to delete{" "}
+                                        <span className="font-semibold">
+                                            {confirmDelete.techName}
+                                        </span>
+                                        ? This action cannot be undone.
+                                    </p>
+
+                                    <div className="flex justify-end gap-3">
+                                        <button
+                                            onClick={() =>
+                                                setConfirmDelete({ open: false, techId: null })
+                                            }
+                                            className="px-4 py-2 rounded-lg border"
+                                        >
+                                            Cancel
+                                        </button>
+
+                                        <button
+                                            onClick={() => {
+                                                deleteTechnology(confirmDelete.techId);
+                                                setConfirmDelete({ open: false, techId: null });
+                                            }}
+                                            className="px-4 py-2 rounded-lg bg-red-500 text-white"
+                                        >
+                                            Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    }
                 </div>
             </div>
         </div>
