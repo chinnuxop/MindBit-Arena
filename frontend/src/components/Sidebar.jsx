@@ -1466,7 +1466,7 @@ const Sidebar = () => {
                   <BookOpen size={28} className="text-indigo-600" />
                 </div>
                 <div>
-                  <h1 className={sidebarStyles.title}>Tech Quiz Master</h1>
+                  <h1 className={sidebarStyles.title}>MindBit Arena</h1>
                   <p className={sidebarStyles.subtitle}>Test • Learn • Grow</p>
                 </div>
               </div>
@@ -1702,7 +1702,7 @@ ${
                     <Brain className="w-6 h-6 text-rose-600" />
                   </div>
                   <h2 className={sidebarStyles.emptyStateTitle}>
-                    Tech Quiz Master
+                    MindBit Arena
                   </h2>
                   <p className={sidebarStyles.emptyStateSubtitle}>
                     Select a technology from the sidebar to begin your quiz
