@@ -21,7 +21,7 @@ const Hero = () => {
                         <div className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 animate-spin-slow blur-[2px]" />
                         {" "}
                         <div className="relative flex items-center justify-center w-24 h-24 rounded-full bg-white text-indigo-600 shadow-lg">
-                            <GraduationCap size={40} />
+                            <GraduationCap size={45} />
                         </div>
                     </div>
                     <h1 className="text-4xl font-bold text-gray-900 mb-2">
